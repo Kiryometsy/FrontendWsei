@@ -1,10 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import PersonProfile from './components/PersonProfile.jsx';
+import { data } from './modules/randomData/module-data.js';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    setProfiles(data); // Set profiles from imported data
+}, []);
 
   return (
     <>
@@ -28,6 +35,14 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <div>
+            <h1>Vite + React</h1>
+            <div className="profiles">
+                {profiles.map(person => (
+                    <PersonProfile key={person.id} person={person} />
+                ))}
+            </div>
+        </div>
     </>
   )
 }
