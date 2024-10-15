@@ -4,7 +4,7 @@ const fs = require('fs');
 const count = Number(process.argv[2]); // Number of objects to generate
 let names = [];                          // Array for storing names
 
-fs.readFile('./src/modules/randomData/names.txt', 'utf8', (err, data) => {
+fs.readFile('./src/data/randomData/names.txt', 'utf8', (err, data) => {
     if (err) {
         console.error(err);
         return;
@@ -35,7 +35,7 @@ fs.readFile('./src/modules/randomData/names.txt', 'utf8', (err, data) => {
     content += "];\n";
 
     // Write to module-data.js
-    fs.writeFile('./src/modules/randomData/module-data.js', content, (err) => {
+    fs.writeFile('./src/data/randomData/module-data.js', content, (err) => {
         if (err) {
             console.error(err);
         }
